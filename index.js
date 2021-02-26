@@ -11,6 +11,9 @@ app.use('/validate', (req, res, next) => {
   if (!req.body.numbers || req.body.numbers.length < 1) {
     return next();
   }
+  if (!Array.isArray(req.body.numbers)) {
+    req.body.numbers = [req.body.numbers];
+  }
   const {
     numbers
   } = req.body;
